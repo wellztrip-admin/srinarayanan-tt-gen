@@ -3,11 +3,13 @@ import { TimetableForm } from '@/components/TimetableForm';
 import { TimetableDisplay } from '@/components/TimetableDisplay';
 import { FormData, TimetableCombination } from '@/types/timetable';
 import { generateTimetableCombinations } from '@/utils/timetableGenerator';
+import { exportToExcel } from '@/utils/excelExport';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { Calendar, ArrowLeft, Shuffle } from 'lucide-react';
+import { Calendar, ArrowLeft, Shuffle, Download } from 'lucide-react';
 
 const Index = () => {
+  const [selectedTab, setSelectedTab] = useState('1');
   const [combinations, setCombinations] = useState<TimetableCombination[] | null>(null);
   const [formData, setFormData] = useState<FormData | null>(null);
 
@@ -87,14 +89,24 @@ const Index = () => {
                 Back to Form
               </Button>
               
-              <Button
-                variant="secondary"
-                onClick={handleRegenerate}
-                className="gap-2"
-              >
-                <Shuffle className="w-4 h-4" />
-                Regenerate Combinations
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  variant="secondary"
+                  onClick={handleRegenerate}
+                  className="gap-2"
+                >
+                  <Shuffle className="w-4 h-4" />
+                  Regenerate
+                </Button>
+                <Button
+                  variant="default"
+                  onClick={() => exportToExcel(combinations, parseInt(selectedTab))}
+                  className="gap-2"
+                >
+                  <Download className="w-4 h-4" />
+                  Export to Excel
+                </Button>
+              </div>
             </div>
 
             {/* Summary */}
@@ -109,7 +121,7 @@ const Index = () => {
             </div>
 
             {/* Timetable Tabs */}
-            <Tabs defaultValue="1" className="space-y-6">
+            <Tabs value={selectedTab} onValueChange={setSelectedTab} className="space-y-6">
               <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 bg-muted/50 p-1 rounded-xl">
                 <TabsTrigger 
                   value="1" 
