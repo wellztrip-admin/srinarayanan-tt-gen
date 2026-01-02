@@ -100,11 +100,11 @@ const Index = () => {
                 </Button>
                 <Button
                   variant="default"
-                  onClick={() => exportToExcel(combinations, parseInt(selectedTab))}
+                  onClick={() => exportToExcel(combinations)}
                   className="gap-2"
                 >
                   <Download className="w-4 h-4" />
-                  Export to Excel
+                  Export All to Excel
                 </Button>
               </div>
             </div>
