@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        display: ['Plus Jakarta Sans', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +61,26 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        schoolA: {
+          DEFAULT: "hsl(var(--school-a))",
+          light: "hsl(var(--school-a-light))",
+        },
+        schoolB: {
+          DEFAULT: "hsl(var(--school-b))",
+          light: "hsl(var(--school-b-light))",
+        },
+        morning: {
+          DEFAULT: "hsl(var(--morning))",
+          light: "hsl(var(--morning-light))",
+        },
+        afternoon: {
+          DEFAULT: "hsl(var(--afternoon))",
+          light: "hsl(var(--afternoon-light))",
+        },
+        maths: "hsl(var(--maths))",
+        physics: "hsl(var(--physics))",
+        chemistry: "hsl(var(--chemistry))",
+        biology: "hsl(var(--biology))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,20 +89,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
